@@ -9,9 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.avif" alt="Cotton USA">
-        </div>
+        <div class="logo"><img src="images/logo.avif" alt="Cotton USA"></div>
         <ul class="MENU">
             <li><a href="index.html">TRANG CHỦ</a></li>
             <li class="has-submenu">
@@ -21,16 +19,14 @@
                     <li><a href="quan.html?type=jogger">Quần Jogger</a></li>
                 </ul>
             </li>
-            <li class="has-submenu">
-                <a href="sweater.html">SWEATERS <span class="arrow">▼</span></a>
+            <li class="has-submenu"><a href="sweater.html">SWEATERS <span class="arrow">▼</span></a>
                 <ul class="sub-menu">
                     <li><a href="sweater.html?id=US001">University Sweater</a></li>
                     <li><a href="sweater.html?id=CS001">Car Sweater</a></li>
                     <li><a href="sweater.html?id=FS001">Floral Sweater</a></li>
                 </ul>
             </li>
-            <li class="has-submenu">
-                <a href="hoodies.html">HOODIES <span class="arrow">▼</span></a>
+            <li class="has-submenu"><a href="hoodies.html">HOODIES <span class="arrow">▼</span></a>
                 <ul class="sub-menu">
                     <li><a href="hoodies.html?id=BH001">Basic Hoodie</a></li>
                     <li><a href="hoodies.html?id=PH001">Porsche Hoodie</a></li>
@@ -57,31 +53,14 @@
             </li>
         </ul>
         <div class="other">
-            <div class="search-icon">
-                <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                <i class="fas fa-search"></i>
-            </div>
+            <div class="search-icon"><input type="text" placeholder="Tìm kiếm sản phẩm..."><i class="fas fa-search"></i></div>
             <div class="cart-wrapper">
-                <button class="cart-icon-btn" id="cartBtn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </button>
+                <button class="cart-icon-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span class="cart-badge" id="cartBadge">0</span></button>
                 <div class="cart-dropdown" id="cartDropdown">
-                    <div class="cart-dropdown-header">
-                        <span>Giỏ hàng</span>
-                        <span id="cartItemCount">0 sản phẩm</span>
-                    </div>
-                    <div class="cart-items-list" id="cartItemsList">
-                        <div class="cart-empty-msg">
-                            <i class="fas fa-shopping-bag"></i>
-                            Giỏ hàng trống
-                        </div>
-                    </div>
+                    <div class="cart-dropdown-header"><span>Giỏ hàng</span><span id="cartItemCount">0 sản phẩm</span></div>
+                    <div class="cart-items-list" id="cartItemsList"><div class="cart-empty-msg"><i class="fas fa-shopping-bag"></i>Giỏ hàng trống</div></div>
                     <div class="cart-dropdown-footer" id="cartFooter" style="display:none">
-                        <div class="cart-total-row">
-                            <span>Tổng cộng:</span>
-                            <span class="cart-total-amount" id="cartTotal">0₫</span>
-                        </div>
+                        <div class="cart-total-row"><span>Tổng cộng:</span><span class="cart-total-amount" id="cartTotal">0₫</span></div>
                         <button class="cart-checkout-btn" onclick="checkout()">Thanh toán ngay →</button>
                     </div>
                 </div>
@@ -121,67 +100,27 @@
         <div class="container">
             <div class="giaohang-top-wrap">
                 <div class="giaohang-top">
-                    <div class="giaohang-top-item">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="giaohang-top-adress giaohang-top-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="giaohang-top-payment giaohang-top-item">
-                        <i class="fas fa-money-check-alt"></i>
-                    </div>
+                    <div class="giaohang-top-item"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="giaohang-top-adress giaohang-top-item"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="giaohang-top-payment giaohang-top-item"><i class="fas fa-money-check-alt"></i></div>
                 </div>
             </div>
             <div class="giaohang-content">
                 <div class="giaohang-content-left">
                     <p>Vui lòng điền thông tin giao hàng</p>
-                    <div class="giaohang-content-left-dangnhap">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <p>Đăng nhập (nếu có tài khoản)</p>
-                    </div>
-                    <div class="giaohang-content-left-khachle">
-                        <input checked name="loaikhach" type="radio" value="khachle">
-                        <p><span style="font-weight: bold;">Khách lẻ</span> (Nếu bạn muốn lưu lại thông tin)</p>
-                    </div>
-                    <div class="giaohang-content-left-dangky">
-                        <input name="loaikhach" type="radio" value="dangky">
-                        <p><span style="font-weight: bold;">Đăng ký</span> (Tạo mới tài khoản với thông tin bên dưới)</p>
-                    </div>
+                    <div class="giaohang-content-left-dangnhap"><i class="fas fa-sign-in-alt"></i><p>Đăng nhập (nếu có tài khoản)</p></div>
+                    <div class="giaohang-content-left-khachle"><input checked name="loaikhach" type="radio" value="khachle"><p><span style="font-weight: bold;">Khách lẻ</span> (Nếu bạn muốn lưu lại thông tin)</p></div>
+                    <div class="giaohang-content-left-dangky"><input name="loaikhach" type="radio" value="dangky"><p><span style="font-weight: bold;">Đăng ký</span> (Tạo mới tài khoản với thông tin bên dưới)</p></div>
                     <div class="giaohang-content-left-thongtin-top">
-    <div class="giaohang-content-left-thongtin-top-item">
-        <label>Họ tên<span style="color:red;">*</span></label>
-        <input type="text" id="customerName">
-    </div>
-
-
-<div class="giaohang-content-left-thongtin-top-item">
-    <label>Số điện thoại<span style="color:red;">*</span></label>
-    <input type="text" id="customerPhone">
-</div>
-
-<div class="giaohang-content-left-thongtin-top-item">
-    <label>Tỉnh/Thành Phố<span style="color:red;">*</span></label>
-    <input type="text" id="customerCity">
-</div>
-
-<div class="giaohang-content-left-thongtin-top-item">
-    <label>Phường/Xã<span style="color:red;">*</span></label>
-    <input type="text" id="customerWard">
-</div>
-
-<div class="giaohang-content-left-thongtin-top-item full">
-    <label>Địa chỉ<span style="color:red;">*</span></label>
-    <input type="text" id="customerAddress">
-</div>
-
-
-</div>
-
+                        <div class="giaohang-content-left-thongtin-top-item"><label>Họ tên<span style="color: red;">*</span></label><input type="text"></div>
+                        <div class="giaohang-content-left-thongtin-top-item"><label>Số điện thoại<span style="color: red;">*</span></label><input type="text"></div>
+                        <div class="giaohang-content-left-thongtin-top-item"><label>Tỉnh/Thành Phố<span style="color: red;">*</span></label><input type="text"></div>
+                        <div class="giaohang-content-left-thongtin-top-item"><label>Phường/Xã<span style="color: red;">*</span></label><input type="text"></div>
+                        <div class="giaohang-content-left-thongtin-top-item full"><label>Địa chỉ<span style="color: red;">*</span></label><input type="text"></div>
+                    </div>
                     <div class="giaohang-content-left-button">
                         <a href="muahang.html"><span>&#171;</span> Quay lại giỏ hàng</a>
-                        <button id="btnGoPayment">
-    THANH TOÁN VÀ GIAO HÀNG
-</button>
+                        <button onclick="window.location.href='chuyentien.html'">THANH TOÁN VÀ GIAO HÀNG</button>
                     </div>
                 </div>
                 <div class="giaohang-content-right">
@@ -236,7 +175,7 @@
 
     <script src="js/cart-auth.js"></script>
     <script>
-        // ================= Giỏ hàng và đăng nhập =================//
+        // ================= CART/AUTH DROPDOWN (Fix lỗi tương tác: xóa & thanh toán & login/register) =================
         (function initHeaderDropdowns() {
             const cartBtn = document.getElementById('cartBtn');
             const cartDropdown = document.getElementById('cartDropdown');
@@ -280,11 +219,12 @@
         })();
 
         // Hiển thị đơn hàng từ giỏ
-        var cartItems = getCart();
-        // Xóa dữ liệu checkout cũ nếu có (tránh hiển thị sản phẩm cũ)
-        if (localStorage.getItem('cottonusa_checkout')) {
+        var checkoutData = localStorage.getItem('cottonusa_checkout');
+        var cartItems = checkoutData ? JSON.parse(checkoutData) : getCart();
+
+        // Xóa dữ liệu "mua ngay" sau khi đã lấy ra, để lần sau không bị hiển thị lại
+        // (nếu thanh toán từ giỏ hàng, cottonusa_checkout sẽ được tạo mới mỗi lần bấm "Thanh toán ngay")
         localStorage.removeItem('cottonusa_checkout');
-        }
         
         var tbody = document.getElementById('cartOrderItems');
         var totalSpan = document.getElementById('cartOrderTotal');
@@ -309,31 +249,5 @@
             tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Giỏ hàng trống</td></tr>';
         }
     </script>
-    <script>
-document.getElementById('btnGoPayment').addEventListener('click', function () {
-
-    const name = document.getElementById('customerName').value.trim();
-    const phone = document.getElementById('customerPhone').value.trim();
-    const city = document.getElementById('customerCity').value.trim();
-    const ward = document.getElementById('customerWard').value.trim();
-    const address = document.getElementById('customerAddress').value.trim();
-
-    if (!name || !phone || !city || !ward || !address) {
-        alert('Vui lòng nhập đầy đủ thông tin giao hàng');
-        return;
-    }
-
-    localStorage.setItem(
-        'cottonusa_customer_info',
-        JSON.stringify({
-            name: name,
-            phone: phone,
-            address: address + ', ' + ward + ', ' + city
-        })
-    );
-
-    window.location.href = 'chuyentien.html';
-});
-</script>
 </body>
 </html>

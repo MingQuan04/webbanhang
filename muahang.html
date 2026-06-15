@@ -808,8 +808,8 @@ document.getElementById('btnMua').addEventListener('click', function() {
     const qty = parseInt(document.getElementById('quantityInput').value) || 1;
     const priceNum = getPriceNumber(product.price);
     
-    // Tạo giỏ hàng mới chỉ gồm sản phẩm đang chọn
-    const newCart = [{
+    // Tạo dữ liệu đơn hàng "mua ngay" chỉ gồm sản phẩm đang chọn
+    const buyNowItem = [{
         id: productId,
         name: product.name,
         price: priceNum,
@@ -818,12 +818,10 @@ document.getElementById('btnMua').addEventListener('click', function() {
         color: selectedColor,
         img: document.getElementById('mainProductImage').src
     }];
-    
-    // Lưu vào giỏ hàng chính
-    localStorage.setItem('cottonusa_cart', JSON.stringify(newCart));
-    // Xóa dữ liệu checkout cũ để tránh hiển thị sản phẩm sai
-    localStorage.removeItem('cottonusa_checkout');
-    
+
+    // Lưu riêng cho trang thanh toán, KHÔNG đụng vào giỏ hàng (cottonusa_cart)
+    localStorage.setItem('cottonusa_checkout', JSON.stringify(buyNowItem));
+
     window.location.href = 'giaohang.html';
 });
     </script>

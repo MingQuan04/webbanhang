@@ -163,20 +163,9 @@ window.checkout = function () {
     window.location.href = 'giaohang.html';
 };
 
-const USERS_KEY = 'cottonusa_users';
-
-function loadUsers() {
-    try {
-        const users = localStorage.getItem(USERS_KEY);
-        return users ? JSON.parse(users) : [];
-    } catch (e) {
-        return [];
-    }
-}
-
-function saveUsers(users) {
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
+// ==================== API ĐĂNG NHẬP / ĐĂNG KÝ ====================
+// Đường dẫn tới API PHP (sửa lại cho đúng với server của bạn nếu cần)
+const API_BASE = '/webbanhang/api';
 
 function getCurrentUser() {
     try {
@@ -197,7 +186,7 @@ function setCurrentUser(user) {
     updateAuthUI();
 }
 
-window.doRegister = function () {
+window.doRegister = async function () {
     const name = document.getElementById('regName')?.value.trim();
     const email = document.getElementById('regEmail')?.value.trim();
     const password = document.getElementById('regPassword')?.value.trim();
@@ -210,60 +199,78 @@ window.doRegister = function () {
         return;
     }
 
-    const users = loadUsers();
+    try {
+        // Gửi dữ liệu lên server để lưu vào database
+        const res = await fetch(API_BASE + '/register.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        });
 
-    if (users.find(u => u.email === email)) {
-        errorDiv.textContent = 'Email đã tồn tại';
+        const data = await res.json();
+
+        if (!data.success) {
+            errorDiv.textContent = data.error || 'Đăng ký thất bại';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Lưu thông tin user để lần sau tự động đăng nhập
+        setCurrentUser(data.user);
+
+        errorDiv.style.display = 'none';
+
+        // Ferme le dropdown après inscription réussie
+        const authDropdown = document.getElementById('authDropdown');
+        const overlay = document.getElementById('dropdownOverlay');
+        if (authDropdown) authDropdown.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+
+        alert('Đăng ký thành công!');
+    } catch (e) {
+        errorDiv.textContent = 'Lỗi kết nối server';
         errorDiv.style.display = 'block';
-        return;
     }
-
-    users.push({ name, email, password });
-    saveUsers(users);
-
-    setCurrentUser({ name, email });
-
-    errorDiv.style.display = 'none';
-
-    // Ferme le dropdown après inscription réussie
-    const authDropdown = document.getElementById('authDropdown');
-    const overlay = document.getElementById('dropdownOverlay');
-    if (authDropdown) authDropdown.classList.remove('open');
-    if (overlay) overlay.classList.remove('active');
-
-    alert('Đăng ký thành công!');
 };
 
-window.doLogin = function () {
+window.doLogin = async function () {
     const email = document.getElementById('loginEmail')?.value.trim();
     const password = document.getElementById('loginPassword')?.value.trim();
 
     const errorDiv = document.getElementById('loginError');
 
-    const users = loadUsers();
+    try {
+        // Gửi email + mật khẩu lên server để kiểm tra trong database
+        const res = await fetch(API_BASE + '/login.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
 
-    const user = users.find(u => u.email === email && u.password === password);
+        const data = await res.json();
 
-    if (!user) {
-        errorDiv.textContent = 'Sai email hoặc mật khẩu';
+        if (!data.success) {
+            errorDiv.textContent = data.error || 'Sai email hoặc mật khẩu';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Lưu thông tin user để lần sau tự động đăng nhập
+        setCurrentUser(data.user);
+
+        errorDiv.style.display = 'none';
+
+        // Ferme le dropdown après connexion réussie
+        const authDropdown = document.getElementById('authDropdown');
+        const overlay = document.getElementById('dropdownOverlay');
+        if (authDropdown) authDropdown.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+
+        alert('Đăng nhập thành công!');
+    } catch (e) {
+        errorDiv.textContent = 'Lỗi kết nối server';
         errorDiv.style.display = 'block';
-        return;
     }
-
-    setCurrentUser({
-        name: user.name,
-        email: user.email
-    });
-
-    errorDiv.style.display = 'none';
-
-    // Ferme le dropdown après connexion réussie
-    const authDropdown = document.getElementById('authDropdown');
-    const overlay = document.getElementById('dropdownOverlay');
-    if (authDropdown) authDropdown.classList.remove('open');
-    if (overlay) overlay.classList.remove('active');
-
-    alert('Đăng nhập thành công!');
 };
 
 window.doLogout = function () {
